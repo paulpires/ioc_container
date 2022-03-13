@@ -28,35 +28,35 @@ final class ContainerTests: XCTestCase {
         try super.tearDownWithError()
     }
 
-    func testContainer_returnsNewRegisteredImplementation() {
+    func testContainer_returnsNewRegisteredImplementation() throws {
 
         sut.register { Network() as NetworkLayer }
-        let resolved = try! sut.resolve() as NetworkLayer
+        let resolved = try sut.resolve() as NetworkLayer
         XCTAssertTrue(resolved is Network)
     }
 
-    func testContainer_returnsNewInstance() {
+    func testContainer_returnsNewInstance() throws {
 
         sut.register { Network() as NetworkLayer }
-        let network1 = try! sut.resolve() as NetworkLayer
-        let network2 = try! sut.resolve() as NetworkLayer
+        let network1 = try sut.resolve() as NetworkLayer
+        let network2 = try sut.resolve() as NetworkLayer
         XCTAssertTrue(network1 is Network)
         XCTAssertTrue(network2 is Network)
         XCTAssertNotIdentical(network1, network2)
     }
 
-    func testContainer_overridesPreviousRegistration() {
+    func testContainer_overridesPreviousRegistration() throws {
 
         sut.register { Network() as NetworkLayer }
-        let network1 = try! sut.resolve() as NetworkLayer
+        let network1 = try sut.resolve() as NetworkLayer
         XCTAssertTrue(network1 is Network)
 
         sut.register { EphemeralNetwork() as NetworkLayer }
-        let network2 = try! sut.resolve() as NetworkLayer
+        let network2 = try sut.resolve() as NetworkLayer
         XCTAssertTrue(network2 is EphemeralNetwork)
     }
 
-    func testContainer_throwsIfNoRegistrationFound() {
+    func testContainer_throwsIfNoRegistrationFound() throws {
         do {
             _ = try sut.resolve() as NetworkLayer
             XCTFail("should throw")
@@ -75,21 +75,21 @@ final class ContainerTests: XCTestCase {
 
     // MARK: - Multiple implementations for the same protocol type
 
-    func testContainer_resolvesDifferentInstancesGivenATag() {
+    func testContainer_resolvesDifferentInstancesGivenATag() throws {
 
         sut.register(tag: "network") { Network() as NetworkLayer }
         sut.register(tag: "ephemeral") { EphemeralNetwork() as NetworkLayer }
 
-        let network1 = try! sut.resolve(tag: "network") as NetworkLayer
-        let network2 = try! sut.resolve(tag: "ephemeral") as NetworkLayer
+        let network1 = try sut.resolve(tag: "network") as NetworkLayer
+        let network2 = try sut.resolve(tag: "ephemeral") as NetworkLayer
         XCTAssertTrue(network1 is Network)
         XCTAssertTrue(network2 is EphemeralNetwork)
     }
 
-    func testContainer_canResolveInnerDependencies() {
+    func testContainer_canResolveInnerDependencies() throws {
         sut.register { Network() as NetworkLayer }
         sut.register { CachingServiceImpl(network: try! self.sut.resolve()) as CachingService }
-        let cachingService = try! sut.resolve() as CachingService
+        let cachingService = try sut.resolve() as CachingService
         XCTAssertTrue(cachingService is CachingServiceImpl)
         XCTAssertTrue((cachingService as! CachingServiceImpl).network is Network)
     }
