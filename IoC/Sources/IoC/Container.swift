@@ -1,21 +1,30 @@
 public final class Container {
 
-    private var factories: [String: () -> Any]
+    private var blueprints: [Blueprint.Key: Blueprint]
 
     public init() {
-        factories = [:]
+        blueprints = [:]
     }
 
-    public func register<T>(_ factory: @escaping () -> T) {
-        let key = "\(T.self)"
-        factories[key] = factory
+    public func register<T>(tag: String? = nil,
+                            _ factory: @escaping () -> T) {
+
+        let key = Blueprint.Key(
+            type: T.self,
+            tag: .init(tag)
+        )
+        blueprints[key] = Blueprint(factory: factory)
     }
 
-    public func resolve<T>() throws -> T {
-        let key = "\(T.self)"
-        guard let factory = factories[key] else {
+    public func resolve<T>(tag: String? = nil) throws -> T {
+
+        let key = Blueprint.Key(
+            type: T.self,
+            tag: .init(tag)
+        )
+        guard let blueprint = blueprints[key] else {
             throw IoCError.missingRegistration(type: T.self)
         }
-        return factory() as! T
+        return blueprint.factory() as! T
     }
 }

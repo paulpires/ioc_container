@@ -6,7 +6,12 @@ class Network: NetworkLayer {}
 class EphemeralNetwork: NetworkLayer {}
 
 protocol CachingService: AnyObject {}
-class CachingServiceImpl: CachingService {}
+class CachingServiceImpl: CachingService {
+    let network: NetworkLayer
+    init(network: NetworkLayer) {
+        self.network = network
+    }
+}
 
 
 final class ContainerTests: XCTestCase {
@@ -61,5 +66,31 @@ final class ContainerTests: XCTestCase {
         } catch {
             XCTFail("unexpected error \(error)")
         }
+    }
+
+    func testContainer_canResolveConcreteImplementations() {
+        sut.register { Network() }
+        XCTAssertNoThrow(try sut.resolve() as Network)
+    }
+
+    // MARK: - Multiple implementations for the same protocol type
+
+    func testContainer_resolvesDifferentInstancesGivenATag() {
+
+        sut.register(tag: "network") { Network() as NetworkLayer }
+        sut.register(tag: "ephemeral") { EphemeralNetwork() as NetworkLayer }
+
+        let network1 = try! sut.resolve(tag: "network") as NetworkLayer
+        let network2 = try! sut.resolve(tag: "ephemeral") as NetworkLayer
+        XCTAssertTrue(network1 is Network)
+        XCTAssertTrue(network2 is EphemeralNetwork)
+    }
+
+    func testContainer_canResolveInnerDependencies() {
+        sut.register { Network() as NetworkLayer }
+        sut.register { CachingServiceImpl(network: try! self.sut.resolve()) as CachingService }
+        let cachingService = try! sut.resolve() as CachingService
+        XCTAssertTrue(cachingService is CachingServiceImpl)
+        XCTAssertTrue((cachingService as! CachingServiceImpl).network is Network)
     }
 }
