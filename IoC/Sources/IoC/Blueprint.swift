@@ -3,41 +3,36 @@
 
 struct Blueprint {
     let factory: () -> Any
+    let afterInit: ((Container, Any) -> Void)?
 }
 
 // MARK: - Blueprint Tag
 
-extension Blueprint {
+enum BlueprintTag: Equatable {
 
-    enum Tag: Equatable {
+    case string(String)
 
-        case string(String)
-
-        init?(_ string: String?) {
-            switch string {
-            case .none: return nil
-            case .some(let string): self = .string(string)
-            }
+    init?(_ string: String?) {
+        switch string {
+        case .none: return nil
+        case .some(let string): self = .string(string)
         }
     }
 }
 
 // MARK: - Blueprint Key
 
-extension Blueprint {
+struct BlueprintKey: Hashable {
 
-    struct Key: Hashable {
+    let type: Any.Type
+    let tag: BlueprintTag?
 
-        let type: Any.Type
-        let tag: Blueprint.Tag?
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(tag.description)
+        hasher.combine(ObjectIdentifier(type))
+    }
 
-        func hash(into hasher: inout Hasher) {
-            hasher.combine(tag.description)
-            hasher.combine(ObjectIdentifier(type))
-        }
-
-        static func == (lhs: Blueprint.Key, rhs: Blueprint.Key) -> Bool {
-            return lhs.type == rhs.type && lhs.tag == rhs.tag
-        }
+    static func == (lhs: BlueprintKey, rhs: BlueprintKey) -> Bool {
+        return lhs.type == rhs.type && lhs.tag == rhs.tag
     }
 }
