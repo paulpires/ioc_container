@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -10,6 +11,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="IoC_example_project" customModuleProvider="target">
             <connections>
+                <outlet property="label1" destination="zdu-GF-xun" id="Mnh-Af-0wg"/>
+                <outlet property="label2" destination="71F-tX-cb1" id="E7V-sQ-3nF"/>
+                <outlet property="label3" destination="DPc-Ec-6sn" id="DPB-BJ-NMH"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -18,20 +22,39 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome home" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vli-ez-yCT">
-                    <rect key="frame" x="148" y="437.5" width="118" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="C61-VK-nh1">
+                    <rect key="frame" x="20" y="64" width="374" height="778"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zdu-GF-xun">
+                            <rect key="frame" x="166.5" y="0.0" width="41.5" height="259.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="71F-tX-cb1">
+                            <rect key="frame" x="166.5" y="259.5" width="41.5" height="259"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DPc-Ec-6sn">
+                            <rect key="frame" x="166.5" y="518.5" width="41.5" height="259.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </stackView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="vli-ez-yCT" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="7h1-NH-nPc"/>
-                <constraint firstItem="vli-ez-yCT" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="OYs-Vp-d5w"/>
+                <constraint firstItem="C61-VK-nh1" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="51b-cn-aZ5"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="C61-VK-nh1" secondAttribute="bottom" constant="20" id="8pS-N8-HkW"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="C61-VK-nh1" secondAttribute="trailing" constant="20" id="M7q-Hv-mdT"/>
+                <constraint firstItem="C61-VK-nh1" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="peC-ST-ITj"/>
             </constraints>
-            <point key="canvasLocation" x="139" y="110"/>
+            <point key="canvasLocation" x="137.68115942028987" y="109.82142857142857"/>
         </view>
     </objects>
     <resources>

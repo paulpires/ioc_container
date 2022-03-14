@@ -1,8 +1,9 @@
 import Foundation
+import IoC
 
 // MARK: - Foo Service
 
-protocol FooService {
+protocol FooService: AnyObject {
     func giveMeFoo() -> String
 }
 
@@ -15,7 +16,7 @@ final class Foo: FooService {
 
 // MARK: - Bar Service
 
-protocol BarService {
+protocol BarService: AnyObject {
     func giveMeBar() -> String
 }
 final class Bar: BarService {
@@ -27,17 +28,19 @@ final class Bar: BarService {
 
 // MARK: - FooBar Service
 
-protocol FooBarService {
+protocol FooBarService: AnyObject {
     func giveMeFooBar() -> String
+    var foo: FooService { get }
+    var bar: BarService { get }
 }
 final class FooBar: FooBarService {
 
-    private let foo: FooService
-    private let bar: BarService
+    let foo: FooService
+    let bar: BarService
 
-    init(foo: FooService, bar: BarService) {
-        self.foo = foo
-        self.bar = bar
+    init(container: Container) throws {
+        self.foo = try container.resolve()
+        self.bar = try container.resolve()
     }
 
     func giveMeFooBar() -> String {

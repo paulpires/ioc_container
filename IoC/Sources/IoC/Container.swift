@@ -11,7 +11,7 @@ public final class Container {
     }
 
     public func register<T>(tag: String? = nil,
-                            _ factory: @escaping () -> T,
+                            _ factory: @escaping () throws -> T,
                             afterInit: ((Container, T) -> Void)? = nil) {
 
         let key = BlueprintKey(
@@ -34,11 +34,11 @@ public final class Container {
             throw IoCError.missingRegistration(type: T.self)
         }
 
-        return recursiveCounter.enter {
+        return try recursiveCounter.enter {
             if let previouslyResolved: T = resolvedInstances[key] {
                 return previouslyResolved
             }
-            let resolved = blueprint.factory() as! T
+            let resolved = try blueprint.factory() as! T
 
             // Because the above factory call can internally resolve dependencies,
             // it could then have already resolved the object we're currently after.

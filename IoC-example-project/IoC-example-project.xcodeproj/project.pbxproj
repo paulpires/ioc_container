@@ -15,9 +15,8 @@
 		4CD25E1827DD1E610055AAC0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD25E1727DD1E610055AAC0 /* SceneDelegate.swift */; };
 		4CD25E1F27DD1E630055AAC0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CD25E1E27DD1E630055AAC0 /* Assets.xcassets */; };
 		4CD25E2227DD1E630055AAC0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CD25E2027DD1E630055AAC0 /* LaunchScreen.storyboard */; };
-		4CD25E2D27DD1E630055AAC0 /* IoC_example_projectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD25E2C27DD1E630055AAC0 /* IoC_example_projectTests.swift */; };
+		4CD25E2D27DD1E630055AAC0 /* FooBarServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD25E2C27DD1E630055AAC0 /* FooBarServiceTests.swift */; };
 		4CD25E3727DD1E630055AAC0 /* IoC_example_projectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD25E3627DD1E630055AAC0 /* IoC_example_projectUITests.swift */; };
-		4CD25E3927DD1E630055AAC0 /* IoC_example_projectUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD25E3827DD1E630055AAC0 /* IoC_example_projectUITestsLaunchTests.swift */; };
 		4CD25E4927DD1EB40055AAC0 /* IoC in Frameworks */ = {isa = PBXBuildFile; productRef = 4CD25E4827DD1EB40055AAC0 /* IoC */; };
 /* End PBXBuildFile section */
 
@@ -50,10 +49,9 @@
 		4CD25E2127DD1E630055AAC0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4CD25E2327DD1E630055AAC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4CD25E2827DD1E630055AAC0 /* IoC-example-projectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "IoC-example-projectTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		4CD25E2C27DD1E630055AAC0 /* IoC_example_projectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IoC_example_projectTests.swift; sourceTree = "<group>"; };
+		4CD25E2C27DD1E630055AAC0 /* FooBarServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooBarServiceTests.swift; sourceTree = "<group>"; };
 		4CD25E3227DD1E630055AAC0 /* IoC-example-projectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "IoC-example-projectUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CD25E3627DD1E630055AAC0 /* IoC_example_projectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IoC_example_projectUITests.swift; sourceTree = "<group>"; };
-		4CD25E3827DD1E630055AAC0 /* IoC_example_projectUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IoC_example_projectUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		4CD25E4627DD1E900055AAC0 /* IoC */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = IoC; path = ../IoC; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -140,7 +138,7 @@
 		4CD25E2B27DD1E630055AAC0 /* IoC-example-projectTests */ = {
 			isa = PBXGroup;
 			children = (
-				4CD25E2C27DD1E630055AAC0 /* IoC_example_projectTests.swift */,
+				4CD25E2C27DD1E630055AAC0 /* FooBarServiceTests.swift */,
 			);
 			path = "IoC-example-projectTests";
 			sourceTree = "<group>";
@@ -149,7 +147,6 @@
 			isa = PBXGroup;
 			children = (
 				4CD25E3627DD1E630055AAC0 /* IoC_example_projectUITests.swift */,
-				4CD25E3827DD1E630055AAC0 /* IoC_example_projectUITestsLaunchTests.swift */,
 			);
 			path = "IoC-example-projectUITests";
 			sourceTree = "<group>";
@@ -315,7 +312,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4CD25E2D27DD1E630055AAC0 /* IoC_example_projectTests.swift in Sources */,
+				4CD25E2D27DD1E630055AAC0 /* FooBarServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,7 +321,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4CD25E3727DD1E630055AAC0 /* IoC_example_projectUITests.swift in Sources */,
-				4CD25E3927DD1E630055AAC0 /* IoC_example_projectUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

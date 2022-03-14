@@ -2,7 +2,7 @@ final class RecursiveCounter {
 
     private var depth: Int = 0
 
-    func enter<T>(block: () -> T, baseReached: () -> Void) -> T {
+    func enter<T>(block: () throws -> T, baseReached: () -> Void) rethrows -> T {
         depth = depth + 1
         defer {
             depth = depth - 1
@@ -10,6 +10,6 @@ final class RecursiveCounter {
                 baseReached()
             }
         }
-        return block()
+        return try block()
     }
 }

@@ -2,7 +2,7 @@
 // MARK: - Blueprint
 
 struct Blueprint {
-    let factory: () -> Any
+    let factory: () throws -> Any
     let afterInit: ((Container, Any) -> Void)?
 }
 
