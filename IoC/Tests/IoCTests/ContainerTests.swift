@@ -62,7 +62,7 @@ final class ContainerTests: XCTestCase {
 
     func testContainer_canResolveConstructorDependencies() throws {
         sut.register { Network() as NetworkLayer }
-        sut.register { CachingServiceImpl(network: try! self.sut.resolve()) as CachingService }
+        sut.register { CachingServiceImpl(network: try self.sut.resolve()) as CachingService }
         let cachingService = try sut.resolve() as CachingService
         XCTAssertTrue(cachingService is CachingServiceImpl)
         XCTAssertTrue((cachingService as! CachingServiceImpl).network is Network)
@@ -85,9 +85,9 @@ final class ContainerTests: XCTestCase {
 
     func testContainer_canResolveCircularDependencies() throws {
 
-        sut.register { ClientImpl(server: try! self.sut.resolve()) as Client }
+        sut.register { ClientImpl(server: try self.sut.resolve()) as Client }
         sut.register { ServerImpl() as Server } afterInit: { container, server in
-            server.client = try! container.resolve() as Client
+            server.client = try container.resolve() as Client
         }
 
         let client = try sut.resolve() as Client
@@ -97,9 +97,9 @@ final class ContainerTests: XCTestCase {
 
     func testContainer_circularDependency_doesNotRetainObjects() throws {
 
-        sut.register { ClientImpl(server: try! self.sut.resolve()) as Client }
+        sut.register { ClientImpl(server: try self.sut.resolve()) as Client }
         sut.register { ServerImpl() as Server } afterInit: { container, server in
-            server.client = try! container.resolve() as Client
+            server.client = try container.resolve() as Client
         }
 
         let server = try sut.resolve() as Server
@@ -114,10 +114,10 @@ final class ContainerTests: XCTestCase {
 
         sut.register(tag: "network") { Network() as NetworkLayer }
         sut.register(tag: "ephemeral") { EphemeralNetwork() as NetworkLayer }
-        sut.register { CachingServiceImpl(network: try! self.sut.resolve(tag: "network")) as CachingService }
-        sut.register { ClientImpl(server: try! self.sut.resolve()) as Client }
+        sut.register { CachingServiceImpl(network: try self.sut.resolve(tag: "network")) as CachingService }
+        sut.register { ClientImpl(server: try self.sut.resolve()) as Client }
         sut.register { ServerImpl() as Server } afterInit: { container, server in
-            server.client = try! container.resolve() as Client
+            server.client = try container.resolve() as Client
         }
 
         weak var network: NetworkLayer?

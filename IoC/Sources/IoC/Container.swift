@@ -74,14 +74,14 @@ public final class Container {
      */
     public func register<T>(tag: String? = nil,
                             _ factory: @escaping () throws -> T,
-                            afterInit: ((Container, T) -> Void)? = nil) {
+                            afterInit: ((Container, T) throws -> Void)? = nil) {
 
         let key = BlueprintKey(
             type: T.self,
             tag: BlueprintTag(tag)
         )
         blueprints[key] = Blueprint(factory: factory, afterInit: { container, resolved in
-            afterInit?(container, resolved as! T)
+            try afterInit?(container, resolved as! T)
         })
     }
 
@@ -150,7 +150,7 @@ public final class Container {
             }
 
             resolvedInstances[key] = resolved
-            blueprint.afterInit?(self, resolved)
+            try blueprint.afterInit?(self, resolved)
             return resolved
         } baseReached: {
             resolvedInstances.empty()

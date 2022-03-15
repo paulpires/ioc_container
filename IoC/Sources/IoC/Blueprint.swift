@@ -3,7 +3,7 @@
 
 struct Blueprint {
     let factory: () throws -> Any
-    let afterInit: ((Container, Any) -> Void)?
+    let afterInit: ((Container, Any) throws -> Void)?
 }
 
 // MARK: - Blueprint Tag
