@@ -1,4 +1,3 @@
-
 extension Optional {
     var description: String {
         switch self {
