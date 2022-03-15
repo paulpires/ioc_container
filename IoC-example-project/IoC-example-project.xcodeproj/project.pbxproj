@@ -11,6 +11,7 @@
 		4C71037827DFAFDC0000599B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C71037627DFAFDC0000599B /* HomeViewController.swift */; };
 		4C71037927DFAFDC0000599B /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C71037727DFAFDC0000599B /* HomeViewController.xib */; };
 		4C71037C27DFB1C10000599B /* FooService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C71037B27DFB1C10000599B /* FooService.swift */; };
+		4C71037E27E1039F0000599B /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4C71037D27E1039F0000599B /* README.md */; };
 		4CD25E1627DD1E610055AAC0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD25E1527DD1E610055AAC0 /* AppDelegate.swift */; };
 		4CD25E1827DD1E610055AAC0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD25E1727DD1E610055AAC0 /* SceneDelegate.swift */; };
 		4CD25E1F27DD1E630055AAC0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CD25E1E27DD1E630055AAC0 /* Assets.xcassets */; };
@@ -42,6 +43,7 @@
 		4C71037627DFAFDC0000599B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		4C71037727DFAFDC0000599B /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		4C71037B27DFB1C10000599B /* FooService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooService.swift; sourceTree = "<group>"; };
+		4C71037D27E1039F0000599B /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		4CD25E1227DD1E610055AAC0 /* IoC-example-project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "IoC-example-project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CD25E1527DD1E610055AAC0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4CD25E1727DD1E610055AAC0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 		4CD25E0927DD1E610055AAC0 = {
 			isa = PBXGroup;
 			children = (
+				4C71037D27E1039F0000599B /* README.md */,
 				4CD25E4527DD1E900055AAC0 /* Packages */,
 				4CD25E1427DD1E610055AAC0 /* IoC-example-project */,
 				4CD25E2B27DD1E630055AAC0 /* IoC-example-projectTests */,
@@ -275,6 +278,7 @@
 			files = (
 				4CD25E2227DD1E630055AAC0 /* LaunchScreen.storyboard in Resources */,
 				4CD25E1F27DD1E630055AAC0 /* Assets.xcassets in Resources */,
+				4C71037E27E1039F0000599B /* README.md in Resources */,
 				4C71037927DFAFDC0000599B /* HomeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

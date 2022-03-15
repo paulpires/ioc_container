@@ -91,7 +91,7 @@ public final class Container {
      - Parameters:
        - tag: Optional tag that uniquely identifies a given registration. Default is `nil`.
 
-     - throws: `IoCError.missingRegistration(type: Any.Type)` if the type cannot be resolved.
+     - throws: `IoCError.missingRegistration` if the type cannot be resolved.
 
      - returns: An instance of type `T`.
 
