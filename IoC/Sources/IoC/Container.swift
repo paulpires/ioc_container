@@ -133,7 +133,7 @@ public final class Container {
         )
 
         guard let blueprint = blueprints[key] else {
-            throw IoCError.missingRegistration(type: T.self)
+            throw IoCError.missingRegistration(type: T.self, tag: tag)
         }
 
         return try recursiveCounter.enter {

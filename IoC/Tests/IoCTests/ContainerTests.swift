@@ -47,9 +47,9 @@ final class ContainerTests: XCTestCase {
         do {
             _ = try sut.resolve() as NetworkLayer
             XCTFail("should throw")
-        } catch IoCError.missingRegistration(let something) {
-            print(something)
-            XCTAssertTrue(something == NetworkLayer.self)
+        } catch IoCError.missingRegistration(let type, let tag) {
+            XCTAssertTrue(type == NetworkLayer.self)
+            XCTAssertNil(tag)
         } catch {
             XCTFail("unexpected error \(error)")
         }
@@ -79,6 +79,28 @@ final class ContainerTests: XCTestCase {
         let network2 = try sut.resolve(tag: "ephemeral") as NetworkLayer
         XCTAssertTrue(network1 is Network)
         XCTAssertTrue(network2 is EphemeralNetwork)
+    }
+
+    func testContainer_throwsIfTypeAndTagRegistrationComboNotFound() throws {
+
+        sut.register() { Network() as NetworkLayer }
+
+        let network1 = try sut.resolve() as NetworkLayer
+        XCTAssertTrue(network1 is Network)
+
+        XCTAssertThrowsError(try sut.resolve(tag: "ephemeral") as NetworkLayer)
+    }
+
+    func testContainer_throwsIfNoRegistrationFoundGivenTag() {
+        do {
+            _ = try sut.resolve(tag: "network") as NetworkLayer
+            XCTFail("should throw")
+        } catch IoCError.missingRegistration(let type, let tag) {
+            XCTAssertTrue(type == NetworkLayer.self)
+            XCTAssertEqual(tag, "network")
+        } catch {
+            XCTFail("unexpected error \(error)")
+        }
     }
 
     // MARK: - Circular dependencies
