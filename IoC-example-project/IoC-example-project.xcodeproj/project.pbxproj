@@ -44,6 +44,7 @@
 		4C71037727DFAFDC0000599B /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		4C71037B27DFB1C10000599B /* FooService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooService.swift; sourceTree = "<group>"; };
 		4C71037D27E1039F0000599B /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		4C71038127E111880000599B /* ioc_container */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = ioc_container; path = ..; sourceTree = "<group>"; };
 		4CD25E1227DD1E610055AAC0 /* IoC-example-project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "IoC-example-project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CD25E1527DD1E610055AAC0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4CD25E1727DD1E610055AAC0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -54,7 +55,6 @@
 		4CD25E2C27DD1E630055AAC0 /* FooBarServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooBarServiceTests.swift; sourceTree = "<group>"; };
 		4CD25E3227DD1E630055AAC0 /* IoC-example-projectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "IoC-example-projectUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CD25E3627DD1E630055AAC0 /* IoC_example_projectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IoC_example_projectUITests.swift; sourceTree = "<group>"; };
-		4CD25E4627DD1E900055AAC0 /* IoC */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = IoC; path = ../IoC; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,11 +100,19 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		4C71038027E111880000599B /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				4C71038127E111880000599B /* ioc_container */,
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
 		4CD25E0927DD1E610055AAC0 = {
 			isa = PBXGroup;
 			children = (
+				4C71038027E111880000599B /* Packages */,
 				4C71037D27E1039F0000599B /* README.md */,
-				4CD25E4527DD1E900055AAC0 /* Packages */,
 				4CD25E1427DD1E610055AAC0 /* IoC-example-project */,
 				4CD25E2B27DD1E630055AAC0 /* IoC-example-projectTests */,
 				4CD25E3527DD1E630055AAC0 /* IoC-example-projectUITests */,
@@ -152,14 +160,6 @@
 				4CD25E3627DD1E630055AAC0 /* IoC_example_projectUITests.swift */,
 			);
 			path = "IoC-example-projectUITests";
-			sourceTree = "<group>";
-		};
-		4CD25E4527DD1E900055AAC0 /* Packages */ = {
-			isa = PBXGroup;
-			children = (
-				4CD25E4627DD1E900055AAC0 /* IoC */,
-			);
-			name = Packages;
 			sourceTree = "<group>";
 		};
 		4CD25E4727DD1EB40055AAC0 /* Frameworks */ = {
