@@ -45,11 +45,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 - [x] Registering multiple instances of the same abstract type
 - [x] Circular dependencies
 - [ ] Singletons
+- [ ] Runtime arguments
 - [ ] Resolving optionals
 - [ ] Reset container & de-register types
-- [ ] Runtime arguments
 - [ ] Thread safety
 - [ ] Cocoapods & Carthage support
+
+## Examples
+
+Have a look at the example project + playground on how you can use the container. These can be found in the `IoC-example-project/IoC-example-project.xcodeproj` project.
+
+> Note: You may need to build the `IoC` framework before you can use it in the playground. To do that open the example project, select the `IoC` scheme and build for iPhone Simulator.
 
 ## Installation
 
